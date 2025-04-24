@@ -1,7 +1,297 @@
 ---
+import { Image } from 'astro:assets';
+
+import Badge from '../components/badge.astro';
+import BookingForm from '../components/booking-form.astro';
+import CardContent from '../components/card/card-content.astro';
+import Card from '../components/card/card.astro';
+import Gallery from '../components/gallery.astro';
+import IconText from '../components/icon-text.astro';
+import PricePerNight from '../components/price-per-night.astro';
 import BaseLayout from '../layouts/base-layout.astro';
 ---
 
 <BaseLayout>
-  <h1 class="text-7xl">Astro Real Estate</h1>
+  <header class="relative h-[70vh] w-full">
+    <div class="absolute inset-0">
+      <Image
+        src="https://picsum.photos/800/500"
+        alt="Luxury Beach House"
+        width={800}
+        height={500}
+        loading="eager"
+        class="absolute inset-0 z-0 h-full w-full object-cover"
+      />
+      <div class="absolute inset-0 bg-black/40"></div>
+    </div>
+    <div class="relative z-10 flex h-full flex-col items-center justify-center px-4 text-center text-white">
+      <h1 class="mb-2 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">Oceanfront Luxury Villa</h1>
+      <p class="mb-8 text-xl md:text-2xl">Experience paradise in Malibu, California</p>
+    </div>
+  </header>
+  <main>
+    <section class="border-b py-4 shadow-sm">
+      <div class="container mx-auto flex flex-col items-end justify-between gap-4 px-4 md:flex-row md:items-center">
+        <div class="flex flex-col items-end gap-4 md:flex-row md:items-center md:gap-8">
+          <IconText class="font-medium" icon="🛏">4 Bedrooms</IconText>
+          <IconText class="font-medium" icon="🛁">3.5 Baths</IconText>
+          <IconText class="font-medium" icon="🏠">3,200 Sq Ft</IconText>
+        </div>
+        <div>
+          <PricePerNight price={75} />
+        </div>
+      </div>
+    </section>
+    <div class="container mx-auto flex flex-col gap-8 px-4 py-8 lg:flex-row lg:gap-12">
+      <div class="flex flex-1 flex-col gap-12">
+        <section>
+          <h2 class="mb-4 text-2xl font-bold">Description</h2>
+          <div class="space-y-4">
+            <p>
+              Welcome to this stunning oceanfront luxury villa in Malibu, California. This exquisite property offers
+              breathtaking views of the Pacific Ocean and direct beach access, creating the perfect retreat for those
+              seeking coastal luxury living.
+            </p>
+            <p>
+              The home features 4 bedrooms, 3.5 bathrooms, and spans 3,200 square feet of meticulously designed living
+              space. The open 3loor plan seamlessly connects the gourmet kitchen, dining area, and spacious living room,
+              all with panoramic ocean views through floor-to-ceiling windows.
+            </p>
+            <p>
+              Outside, enjoy the infinity pool overlooking the ocean, a spacious deck perfect for entertaining, and
+              private steps leading directly to the beach. This property combines luxury, comfort, and an unbeatable
+              location to create a truly exceptional living experience.
+            </p>
+          </div>
+        </section>
+        <section>
+          <h2 class="mb-6 text-2xl font-bold">Gallery</h2>
+          <Gallery />
+        </section>
+        <section>
+          <h2 class="mb-6 text-2xl font-bold">Features</h2>
+          <div class="grid grid-cols-1 gap-6 xl:grid-cols-2">
+            <Card>
+              <CardContent class="flex items-start gap-4 p-6">
+                <span class="text-xl">🌊</span>
+                <div>
+                  <h3 class="mb-2 text-lg font-semibold">Beachfront Access</h3>
+                  <p>Direct access to a private beach with stunning ocean views</p>
+                </div>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardContent class="flex items-start gap-4 p-6">
+                <span class="text-xl">🏊‍♂️</span>
+                <div>
+                  <h3 class="mb-2 text-lg font-semibold">Infinity Pool</h3>
+                  <p>Heated infinity pool overlooking the Pacific Ocean</p>
+                </div>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardContent class="flex items-start gap-4 p-6">
+                <span class="text-xl">🐕</span>
+                <div>
+                  <h3 class="mb-2 text-lg font-semibold">Pet Friendly</h3>
+                  <p>Bring your furry friends to enjoy the vacation with you</p>
+                </div>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardContent class="flex items-start gap-4 p-6">
+                <span class="text-xl">💻</span>
+                <div>
+                  <h3 class="mb-2 text-lg font-semibold">High-Speed WiFi</h3>
+                  <p>Stay connected with gigabit fiber internet throughout the property</p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+        <section>
+          <h2 class="mb-6 text-2xl font-bold">Amenities</h2>
+          <div class="grid grid-cols-2 gap-y-4 sm:grid-cols-3 md:grid-cols-2 xl:grid-cols-3">
+            <IconText icon="💻">High-Speed WiFi</IconText>
+            <IconText icon="🏊">Infinity Pool</IconText>
+            <IconText icon="📺">Smart TVs</IconText>
+            <IconText icon="🧑‍🍳">Fully Equipped Kitchen</IconText>
+            <IconText icon="🏖">Beach Access</IconText>
+            <IconText icon="🚗">Parking</IconText>
+            <IconText icon="🐕">Pet Friendly</IconText>
+            <IconText icon="📺">Home Theater</IconText>
+          </div>
+        </section>
+        <section>
+          <h2 class="mb-6 text-2xl font-bold">Room Tour</h2>
+          <div class="overflow-hidden rounded-lg">
+            <Image
+              src="https://picsum.photos/800/500"
+              alt="Room Tour"
+              width={800}
+              height={500}
+              class="w-full object-contain"
+            />
+          </div>
+          <div class="mt-8 grid grid-cols-1 gap-6 xl:grid-cols-2">
+            <div>
+              <h3 class="mb-4 text-xl font-semibold">Main Floor</h3>
+              <ul class="space-y-2">
+                <li class="flex items-center gap-2">
+                  <Badge>Living Room</Badge>
+                  <span class="text-sm">Open concept with ocean views</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <Badge>Kitchen</Badge>
+                  <span class="text-sm">Gourmet kitchen with island</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <Badge>Dining Area</Badge>
+                  <span class="text-sm">Seats 8 comfortably</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <Badge>Master Suite</Badge>
+                  <span class="text-sm">King bed with en-suite bathroom</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="mb-4 text-xl font-semibold">Second Floor</h3>
+              <ul class="space-y-2">
+                <li class="flex items-center gap-2">
+                  <Badge>Bedroom 2</Badge>
+                  <span class="text-sm">Queen bed with balcony</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <Badge>Bedroom 3</Badge>
+                  <span class="text-sm">Two twin beds</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <Badge>Bedroom 4</Badge>
+                  <span class="text-sm">Queen bed with ocean view</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <Badge>Shared Bathroom</Badge>
+                  <span class="text-sm">Full bathroom with tub/shower</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section>
+          <h2 class="mb-6 text-2xl font-bold">Location</h2>
+          <div class="overflow-hidden rounded-lg">
+            <Image
+              src="https://picsum.photos/800/500"
+              alt="Map"
+              width={800}
+              height={500}
+              class="w-full object-contain"
+            />
+          </div>
+          <div class="mt-6 flex items-center gap-2">
+            <span>📍</span>
+            <p>Malibu, California 90265, United States</p>
+          </div>
+        </section>
+        <section>
+          <h2 class="mb-6 text-2xl font-bold">Neighborhood</h2>
+          <div class="grid grid-cols-1 gap-8 xl:grid-cols-2">
+            <div>
+              <p class="mb-6">
+                Located in the prestigious Malibu area, this property offers easy access to local attractions, dining,
+                and shopping. Enjoy the best of coastal living with these nearby highlights:
+              </p>
+              <div class="space-y-4">
+                <div class="flex items-start gap-3">
+                  <span>☕</span>
+                  <div>
+                    <h3 class="font-medium">Local Cafés</h3>
+                    <p class="text-sm">Several artisan coffee shops within walking distance</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span>🍴</span>
+                  <div>
+                    <h3 class="font-medium">Fine Dining</h3>
+                    <p class="text-sm">Award-winning restaurants with ocean views</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span>🛍</span>
+                  <div>
+                    <h3 class="font-medium">Shopping</h3>
+                    <p class="text-sm">Boutique shops and malls within a short drive</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <span>🌲</span>
+                  <div>
+                    <h3 class="font-medium">Parks & Recreation</h3>
+                    <p class="text-sm">Hiking trails and nature preserves nearby</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div class="overflow-hidden rounded-lg">
+                <Image
+                  src="https://picsum.photos/400/300"
+                  alt="Local Beach"
+                  width={400}
+                  height={300}
+                  class="h-full w-full object-cover transition-transform hover:scale-105"
+                />
+              </div>
+              <div class="overflow-hidden rounded-lg">
+                <Image
+                  src="https://picsum.photos/400/300"
+                  alt="Local Restaurant"
+                  width={400}
+                  height={300}
+                  class="h-full w-full object-cover transition-transform hover:scale-105"
+                />
+              </div>
+              <div class="overflow-hidden rounded-lg">
+                <Image
+                  src="https://picsum.photos/400/300"
+                  alt="Shopping Area"
+                  width={400}
+                  height={300}
+                  class="h-full w-full object-cover transition-transform hover:scale-105"
+                />
+              </div>
+              <div class="overflow-hidden rounded-lg">
+                <Image
+                  src="https://picsum.photos/400/300"
+                  alt="Hiking Trail"
+                  width={400}
+                  height={300}
+                  class="h-full w-full object-cover transition-transform hover:scale-105"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <aside class="lg:max-w-sm">
+        <Card class="sticky top-8">
+          <CardContent>
+            <h3 class="mb-4 text-xl font-semibold">Book Your Stay</h3>
+            <BookingForm />
+          </CardContent>
+        </Card>
+      </aside>
+    </div>
+  </main>
+  <footer class="border-t bg-gray-50 py-8">
+    <div class="container mx-auto flex flex-col items-center justify-between gap-4 px-4 md:flex-row md:px-6">
+      <p class="text-center text-sm">© 2025 Luxury Beach Rentals. All rights reserved.</p>
+      <div class="flex gap-4">
+        <a href="#">Contact Us</a>
+        <a href="#">Terms & Conditions</a>
+        <a href="#">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
 </BaseLayout>

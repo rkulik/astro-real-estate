@@ -1,0 +1,53 @@
+---
+import { Image } from 'astro:assets';
+
+const images = [
+  {
+    src: 'https://picsum.photos/400/300',
+    alt: 'Living Room',
+  },
+  {
+    src: 'https://picsum.photos/400/300',
+    alt: 'Kitchen',
+  },
+  {
+    src: 'https://picsum.photos/400/300',
+    alt: 'Master Bedroom',
+  },
+  {
+    src: 'https://picsum.photos/400/300',
+    alt: 'Pool Area',
+  },
+  {
+    src: 'https://picsum.photos/400/300',
+    alt: 'Outdoor Patio',
+  },
+  {
+    src: 'https://picsum.photos/400/300',
+    alt: 'Bathroom',
+  },
+];
+---
+
+<div class="mx-auto w-full">
+  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
+    {
+      images.map((image) => {
+        return (
+          <div class="group relative aspect-[4/3] overflow-hidden rounded-lg">
+            <Image
+              src={image.src}
+              alt={image.alt}
+              width={400}
+              height={300}
+              class="h-full w-full object-cover transition-transform hover:scale-105"
+            />
+            <div class="absolute bottom-3 left-3 rounded-md bg-black/50 px-3 py-1 text-sm text-white backdrop-blur-sm">
+              {image.alt}
+            </div>
+          </div>
+        );
+      })
+    }
+  </div>
+</div>
