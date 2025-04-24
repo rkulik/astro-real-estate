@@ -5,7 +5,7 @@ const rkulikPrettierConfig = createRequire(import.meta.url)('@rkulik/prettier-co
 // eslint-disable-next-line import/no-default-export
 export default {
   ...rkulikPrettierConfig,
-  plugins: ['prettier-plugin-astro'],
+  plugins: ['prettier-plugin-astro', 'prettier-plugin-tailwindcss'],
   overrides: [
     {
       files: '*.astro',
@@ -14,4 +14,5 @@ export default {
       },
     },
   ],
+  tailwindStylesheet: './src/styles/global.css',
 };
