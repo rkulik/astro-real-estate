@@ -1,0 +1,29 @@
+{
+  "name": "astro-real-estate",
+  "type": "module",
+  "version": "0.0.1",
+  "packageManager": "pnpm@9.15.2",
+  "description": "Astro Real Estate is a modern, high-performance real estate website built with Astro",
+  "author": "René Kulik <rene@kulik.io> (https://www.kulik.io/)",
+  "license": "MIT",
+  "homepage": "https://github.com/rkulik/astro-real-estate#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rkulik/astro-real-estate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rkulik/astro-real-estate/issues"
+  },
+  "keywords": [
+    "astro"
+  ],
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^5.7.5"
+  }
+}
