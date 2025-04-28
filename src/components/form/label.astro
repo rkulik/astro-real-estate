@@ -1,0 +1,14 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends Omit<HTMLAttributes<'label'>, 'for'> {
+  for: string;
+  required?: boolean;
+}
+
+const { required, class: className, ...restOfProps } = Astro.props;
+---
+
+<label {...restOfProps} class:list={['cursor-pointer', className]}>
+  <slot />&nbsp;{required ? <span class="text-red-500">*</span> : ''}
+</label>

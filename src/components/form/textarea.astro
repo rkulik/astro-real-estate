@@ -1,0 +1,27 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+export type Props = HTMLAttributes<'textarea'>;
+
+const { class: className, ...restOfProps } = Astro.props;
+---
+
+{
+  restOfProps.value ? (
+    <textarea
+      {...restOfProps}
+      class:list={[
+        'placeholder:text-muted-foreground block w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 focus:border-blue-600 focus:ring-blue-600 focus-visible:ring-1 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50',
+        className,
+        // eslint-disable-next-line prettier/prettier
+      ]}>{restOfProps.value}</textarea>
+  ) : (
+    <textarea
+      {...restOfProps}
+      class:list={[
+        'placeholder:text-muted-foreground block w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 focus:border-blue-600 focus:ring-blue-600 focus-visible:ring-1 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50',
+        className,
+      ]}
+    />
+  )
+}

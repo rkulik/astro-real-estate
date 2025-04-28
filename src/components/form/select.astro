@@ -1,0 +1,16 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+export type Props = HTMLAttributes<'select'>;
+
+const { class: className, ...restOfProps } = Astro.props;
+---
+
+<select
+  {...restOfProps}
+  class:list={[
+    'placeholder:text-muted-foreground block w-full rounded-lg border border-gray-300 bg-gray-50 px-3 py-2 focus:border-blue-600 focus:ring-blue-600 focus-visible:ring-1 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-5',
+    className,
+  ]}>
+  <slot />
+</select>

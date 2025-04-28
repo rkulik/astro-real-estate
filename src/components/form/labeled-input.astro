@@ -1,0 +1,15 @@
+---
+import type { Props as InputProps } from './input.astro';
+import Input from './input.astro';
+import Label from './label.astro';
+
+interface Props extends Omit<InputProps, 'id'> {
+  id: string;
+  label: string;
+}
+
+const { label, ...restOfProps } = Astro.props;
+---
+
+<Label for={restOfProps.id} required={!!restOfProps.required}>{label}</Label>
+<Input {...restOfProps} />

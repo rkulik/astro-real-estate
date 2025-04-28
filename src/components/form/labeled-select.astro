@@ -1,0 +1,17 @@
+---
+import Label from './label.astro';
+import type { Props as SelectProps } from './select.astro';
+import Select from './select.astro';
+
+interface Props extends Omit<SelectProps, 'id'> {
+  id: string;
+  label: string;
+}
+
+const { label, ...restOfProps } = Astro.props;
+---
+
+<Label for={restOfProps.id} required={!!restOfProps.required}>{label}</Label>
+<Select {...restOfProps}>
+  <slot />
+</Select>

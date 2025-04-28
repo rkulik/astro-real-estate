@@ -1,0 +1,16 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+type Props = HTMLAttributes<'button'>;
+
+const { class: className, ...restOfProps } = Astro.props;
+---
+
+<button
+  {...restOfProps}
+  class:list={[
+    'w-full cursor-pointer rounded-md bg-blue-600 p-2 text-center font-bold text-white hover:bg-blue-700',
+    className,
+  ]}>
+  <slot />
+</button>

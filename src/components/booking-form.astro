@@ -1,4 +1,9 @@
 ---
+import Button from './form/button.astro';
+import Input from './form/input.astro';
+import LabeledInput from './form/labeled-input.astro';
+import LabeledSelect from './form/labeled-select.astro';
+import LabeledTextarea from './form/labeled-textarea.astro';
 import IconText from './icon-text.astro';
 import PricePerNight from './price-per-night.astro';
 ---
@@ -12,33 +17,14 @@ import PricePerNight from './price-per-night.astro';
   <div class="space-y-4">
     <div class="grid gap-4 md:grid-cols-2">
       <div class="space-y-2">
-        <label for="check-in" class="cursor-pointer">Check In <span class="text-red-500">*</span></label>
-        <input
-          type="date"
-          id="check-in"
-          name="check-in"
-          class="border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring w-full rounded-md border px-3 py-2 text-base focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
-          required
-        />
+        <LabeledInput type="date" id="check-in" name="check-in" label="Check In" required />
       </div>
       <div class="space-y-2">
-        <label for="check-out" class="cursor-pointer">Check Out <span class="text-red-500">*</span></label>
-        <input
-          type="date"
-          id="check-out"
-          name="check-out"
-          class="border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring w-full rounded-md border px-3 py-2 text-base focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
-          required
-        />
+        <LabeledInput type="date" id="check-out" name="check-out" label="Check Out" required />
       </div>
     </div>
     <div class="space-y-2">
-      <lable for="guests" class="cursor-pointer">Guests <span class="text-red-500">*</span></lable>
-      <select
-        id="guests"
-        name="guests"
-        class="border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring w-full rounded-md border px-3 py-2 text-base focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
-        required>
+      <LabeledSelect id="guests" name="guests" label="Guests" required>
         <option value="" disabled>Select number of guests</option>
         <option value="1">1 Guest</option>
         <option value="2">2 Guests</option>
@@ -48,68 +34,55 @@ import PricePerNight from './price-per-night.astro';
         <option value="6">6 Guests</option>
         <option value="7">7 Guests</option>
         <option value="8">8 Guests</option>
-      </select>
+      </LabeledSelect>
     </div>
     <div class="space-y-2">
-      <label for="name" class="cursor-pointer">Full Name <span class="text-red-500">*</span></label>
-      <input
-        id="name"
-        type="text"
-        name="name"
-        placeholder="Enter your full name"
-        class="border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring w-full rounded-md border px-3 py-2 text-base focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
-        required
-      />
+      <LabeledInput type="text" id="name" name="name" label="Full Name" placeholder="Enter your full name" required />
     </div>
     <div class="space-y-2">
-      <label for="email" class="cursor-pointer">Email Address <span class="text-red-500">*</span></label>
-      <input
-        id="email"
+      <LabeledInput
         type="email"
+        id="email"
         name="email"
+        label="Email Address"
         placeholder="Enter your email"
-        class="border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring w-full rounded-md border px-3 py-2 text-base focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
         required
       />
     </div>
     <div class="space-y-2">
-      <label for="phone" class="cursor-pointer">Phone Number <span class="text-red-500">*</span></label>
-      <input
+      <LabeledInput
+        type="text"
         id="phone"
         name="phone"
+        label="Phone Number"
         placeholder="Enter your phone number"
-        class="border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring w-full rounded-md border px-3 py-2 text-base focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
         required
       />
     </div>
     <div class="space-y-2">
-      <label for="special-requests" class="cursor-pointer">Special Requests</label>
-      <textarea
+      <LabeledTextarea
         id="special-requests"
         name="special-requests"
+        label="Special Requests"
         rows="3"
         placeholder="Any special requests or requirements?"
-        class="border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring w-full rounded-md border px-3 py-2 text-base focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
-      ></textarea>
+      />
     </div>
     <div class="flex items-center gap-2">
-      <input type="checkbox" id="terms" name="terms" required />
+      <Input type="checkbox" id="terms" name="terms" required />
       <label for="terms" class="cursor-pointer text-sm font-normal">
         I agree to the <a href="#" class="text-blue-600 underline"> terms and conditions </a> and <a
           href="#"
           class="text-blue-600 underline">
           cancellation policy
-        </a>
-        <span class="text-red-500">*</span>
+        </a>&nbsp;<span class="text-red-500">*</span>
       </label>
     </div>
     <p class="text-xs text-gray-500"><span class="text-red-500">*</span> Required fields.</p>
   </div>
-  <button
-    type="submit"
-    class="w-full cursor-pointer rounded-md bg-blue-600 p-2 text-center font-bold text-white hover:bg-blue-700">
+  <Button type="submit">
     <IconText icon="💳" class="inline-block">Book Now</IconText>
-  </button>
+  </Button>
   <p class="text-xs text-gray-500">
     You won't be charged yet. Payment details will be collected after booking confirmation.
   </p>

@@ -1,0 +1,15 @@
+---
+import Label from './label.astro';
+import TextArea from './textarea.astro';
+import type { Props as TextareaProps } from './textarea.astro';
+
+interface Props extends Omit<TextareaProps, 'id'> {
+  id: string;
+  label: string;
+}
+
+const { label, ...restOfProps } = Astro.props;
+---
+
+<Label for={restOfProps.id} required={!!restOfProps.required}>{label}</Label>
+<TextArea {...restOfProps} />
