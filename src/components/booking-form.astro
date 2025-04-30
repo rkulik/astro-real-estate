@@ -4,7 +4,6 @@ import Input from './form/input.astro';
 import LabeledInput from './form/labeled-input.astro';
 import LabeledSelect from './form/labeled-select.astro';
 import LabeledTextarea from './form/labeled-textarea.astro';
-import IconText from './icon-text.astro';
 import PricePerNight from './price-per-night.astro';
 ---
 
@@ -80,9 +79,7 @@ import PricePerNight from './price-per-night.astro';
     </div>
     <p class="text-xs text-gray-500"><span class="text-red-500">*</span> Required fields.</p>
   </div>
-  <Button type="submit">
-    <IconText icon="💳" class="inline-block">Book Now</IconText>
-  </Button>
+  <Button type="submit">Book Now</Button>
   <p class="text-xs text-gray-500">
     You won't be charged yet. Payment details will be collected after booking confirmation.
   </p>

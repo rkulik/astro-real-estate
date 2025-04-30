@@ -5,8 +5,8 @@ import Badge from '../components/badge.astro';
 import BookingForm from '../components/booking-form.astro';
 import CardContent from '../components/card/card-content.astro';
 import Card from '../components/card/card.astro';
+import Feature from '../components/feature.astro';
 import Gallery from '../components/gallery.astro';
-import IconText from '../components/icon-text.astro';
 import PricePerNight from '../components/price-per-night.astro';
 import BaseLayout from '../layouts/base-layout.astro';
 ---
@@ -33,9 +33,18 @@ import BaseLayout from '../layouts/base-layout.astro';
     <section class="border-b py-4 shadow-sm">
       <div class="container mx-auto flex flex-col items-end justify-between gap-4 px-4 md:flex-row md:items-center">
         <div class="flex flex-col items-end gap-4 md:flex-row md:items-center md:gap-8">
-          <IconText class="font-medium" icon="🛏">4 Bedrooms</IconText>
-          <IconText class="font-medium" icon="🛁">3.5 Baths</IconText>
-          <IconText class="font-medium" icon="🏠">3,200 Sq Ft</IconText>
+          <Feature>
+            <span slot="label">🛏</span>
+            <p slot="title" class="font-medium">4 Bedrooms</p>
+          </Feature>
+          <Feature>
+            <span slot="label">🛁</span>
+            <p slot="title" class="font-medium">3.5 Baths</p>
+          </Feature>
+          <Feature>
+            <span slot="label">🏠</span>
+            <p slot="title" class="font-medium">3,200 Sq Ft</p>
+          </Feature>
         </div>
         <div>
           <PricePerNight price={75} />
@@ -73,38 +82,38 @@ import BaseLayout from '../layouts/base-layout.astro';
           <div class="grid grid-cols-1 gap-6 xl:grid-cols-2">
             <Card>
               <CardContent class="flex items-start gap-4 p-6">
-                <span class="text-xl">🌊</span>
-                <div>
-                  <h3 class="mb-2 text-lg font-semibold">Beachfront Access</h3>
-                  <p>Direct access to a private beach with stunning ocean views</p>
-                </div>
+                <Feature>
+                  <span slot="label" class="text-xl">🏖</span>
+                  <h3 slot="title" class="mb-2 text-lg font-semibold">Beachfront Access</h3>
+                  <p slot="description">Direct access to a private beach with stunning ocean views</p>
+                </Feature>
               </CardContent>
             </Card>
             <Card>
               <CardContent class="flex items-start gap-4 p-6">
-                <span class="text-xl">🏊‍♂️</span>
-                <div>
-                  <h3 class="mb-2 text-lg font-semibold">Infinity Pool</h3>
-                  <p>Heated infinity pool overlooking the Pacific Ocean</p>
-                </div>
+                <Feature>
+                  <span slot="label" class="text-xl">🏊</span>
+                  <h3 slot="title" class="mb-2 text-lg font-semibold">Infinity Pool</h3>
+                  <p slot="description">Heated infinity pool overlooking the Pacific Ocean</p>
+                </Feature>
               </CardContent>
             </Card>
             <Card>
               <CardContent class="flex items-start gap-4 p-6">
-                <span class="text-xl">🐕</span>
-                <div>
-                  <h3 class="mb-2 text-lg font-semibold">Pet Friendly</h3>
-                  <p>Bring your furry friends to enjoy the vacation with you</p>
-                </div>
+                <Feature>
+                  <span slot="label" class="text-xl">🐕</span>
+                  <h3 slot="title" class="mb-2 text-lg font-semibold">Pet Friendly</h3>
+                  <p slot="description">Bring your furry friends to enjoy the vacation with you</p>
+                </Feature>
               </CardContent>
             </Card>
             <Card>
               <CardContent class="flex items-start gap-4 p-6">
-                <span class="text-xl">💻</span>
-                <div>
-                  <h3 class="mb-2 text-lg font-semibold">High-Speed WiFi</h3>
-                  <p>Stay connected with gigabit fiber internet throughout the property</p>
-                </div>
+                <Feature>
+                  <span slot="label" class="text-xl">💻</span>
+                  <h3 slot="title" class="mb-2 text-lg font-semibold">High-Speed WiFi</h3>
+                  <p slot="description">Stay connected with gigabit fiber internet throughout the property</p>
+                </Feature>
               </CardContent>
             </Card>
           </div>
@@ -112,14 +121,38 @@ import BaseLayout from '../layouts/base-layout.astro';
         <section>
           <h2 class="mb-6 text-2xl font-bold">Amenities</h2>
           <div class="grid grid-cols-2 gap-y-4 sm:grid-cols-3 md:grid-cols-2 xl:grid-cols-3">
-            <IconText icon="💻">High-Speed WiFi</IconText>
-            <IconText icon="🏊">Infinity Pool</IconText>
-            <IconText icon="📺">Smart TVs</IconText>
-            <IconText icon="🧑‍🍳">Fully Equipped Kitchen</IconText>
-            <IconText icon="🏖">Beach Access</IconText>
-            <IconText icon="🚗">Parking</IconText>
-            <IconText icon="🐕">Pet Friendly</IconText>
-            <IconText icon="📺">Home Theater</IconText>
+            <Feature>
+              <span slot="label">💻</span>
+              <p slot="description">High-Speed WiFi</p>
+            </Feature>
+            <Feature>
+              <span slot="label">🏊</span>
+              <p slot="description">Infinity Pool</p>
+            </Feature>
+            <Feature>
+              <span slot="label">📺</span>
+              <p slot="description">Smart TVs</p>
+            </Feature>
+            <Feature>
+              <span slot="label">🧑‍🍳</span>
+              <p slot="description">Fully Equipped Kitchen</p>
+            </Feature>
+            <Feature>
+              <span slot="label">🏖</span>
+              <p slot="description">Beach Access</p>
+            </Feature>
+            <Feature>
+              <span slot="label">🚗</span>
+              <p slot="description">Parking</p>
+            </Feature>
+            <Feature>
+              <span slot="label">🐕</span>
+              <p slot="description">Pet Friendly</p>
+            </Feature>
+            <Feature>
+              <span slot="label">📺</span>
+              <p slot="description">Home Theater</p>
+            </Feature>
           </div>
         </section>
         <section>
@@ -136,62 +169,64 @@ import BaseLayout from '../layouts/base-layout.astro';
           <div class="mt-8 grid grid-cols-1 gap-6 xl:grid-cols-2">
             <div>
               <h3 class="mb-4 text-xl font-semibold">Main Floor</h3>
-              <ul class="space-y-2">
-                <li class="flex items-center gap-2">
-                  <Badge>Living Room</Badge>
-                  <span class="text-sm">Open concept with ocean views</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <Badge>Kitchen</Badge>
-                  <span class="text-sm">Gourmet kitchen with island</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <Badge>Dining Area</Badge>
-                  <span class="text-sm">Seats 8 comfortably</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <Badge>Master Suite</Badge>
-                  <span class="text-sm">King bed with en-suite bathroom</span>
-                </li>
-              </ul>
+              <div class="space-y-2">
+                <Feature>
+                  <Badge slot="label">Living Room</Badge>
+                  <p slot="description">Open concept with ocean views</p>
+                </Feature>
+                <Feature>
+                  <Badge slot="label">Kitchen</Badge>
+                  <p slot="description">Gourmet kitchen with island</p>
+                </Feature>
+                <Feature>
+                  <Badge slot="label">Dining Area</Badge>
+                  <p slot="description">Seats 8 comfortably</p>
+                </Feature>
+                <Feature>
+                  <Badge slot="label">Master Suite</Badge>
+                  <p slot="description">King bed with en-suite bathroom</p>
+                </Feature>
+              </div>
             </div>
             <div>
               <h3 class="mb-4 text-xl font-semibold">Second Floor</h3>
-              <ul class="space-y-2">
-                <li class="flex items-center gap-2">
-                  <Badge>Bedroom 2</Badge>
-                  <span class="text-sm">Queen bed with balcony</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <Badge>Bedroom 3</Badge>
-                  <span class="text-sm">Two twin beds</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <Badge>Bedroom 4</Badge>
-                  <span class="text-sm">Queen bed with ocean view</span>
-                </li>
-                <li class="flex items-center gap-2">
-                  <Badge>Shared Bathroom</Badge>
-                  <span class="text-sm">Full bathroom with tub/shower</span>
-                </li>
-              </ul>
+              <div class="space-y-2">
+                <Feature>
+                  <Badge slot="label">Bedroom 2</Badge>
+                  <p slot="description">Queen bed with balcony</p>
+                </Feature>
+                <Feature>
+                  <Badge slot="label">Bedroom 3</Badge>
+                  <p slot="description">Two twin beds</p>
+                </Feature>
+                <Feature>
+                  <Badge slot="label">Bedroom 4</Badge>
+                  <p slot="description">Queen bed with ocean view</p>
+                </Feature>
+                <Feature>
+                  <Badge slot="label">Shared Bathroom</Badge>
+                  <p slot="description">Full bathroom with tub/shower</p>
+                </Feature>
+              </div>
             </div>
           </div>
         </section>
         <section>
           <h2 class="mb-6 text-2xl font-bold">Location</h2>
-          <div class="overflow-hidden rounded-lg">
-            <Image
-              src="https://picsum.photos/800/500"
-              alt="Map"
-              width={800}
-              height={500}
-              class="w-full object-contain"
-            />
-          </div>
-          <div class="mt-6 flex items-center gap-2">
-            <span>📍</span>
-            <p>Malibu, California 90265, United States</p>
+          <div class="space-y-4">
+            <div class="overflow-hidden rounded-lg">
+              <Image
+                src="https://picsum.photos/800/500"
+                alt="Map"
+                width={800}
+                height={500}
+                class="w-full object-contain"
+              />
+            </div>
+            <Feature>
+              <span slot="label">📍</span>
+              <p slot="description">Malibu, California 90265, United States</p>
+            </Feature>
           </div>
         </section>
         <section>
@@ -204,32 +239,32 @@ import BaseLayout from '../layouts/base-layout.astro';
               </p>
               <div class="space-y-4">
                 <div class="flex items-start gap-3">
-                  <span>☕</span>
-                  <div>
-                    <h3 class="font-medium">Local Cafés</h3>
-                    <p class="text-sm">Several artisan coffee shops within walking distance</p>
-                  </div>
+                  <Feature>
+                    <span slot="label">☕</span>
+                    <h3 slot="title" class="font-medium">Local Cafés</h3>
+                    <p slot="description" class="text-sm">Several artisan coffee shops within walking distance</p>
+                  </Feature>
                 </div>
                 <div class="flex items-start gap-3">
-                  <span>🍴</span>
-                  <div>
-                    <h3 class="font-medium">Fine Dining</h3>
-                    <p class="text-sm">Award-winning restaurants with ocean views</p>
-                  </div>
+                  <Feature>
+                    <span slot="label">🍴</span>
+                    <h3 slot="title" class="font-medium">Fine Dining</h3>
+                    <p slot="description" class="text-sm">Award-winning restaurants with ocean views</p>
+                  </Feature>
                 </div>
                 <div class="flex items-start gap-3">
-                  <span>🛍</span>
-                  <div>
-                    <h3 class="font-medium">Shopping</h3>
-                    <p class="text-sm">Boutique shops and malls within a short drive</p>
-                  </div>
+                  <Feature>
+                    <span slot="label">🛍</span>
+                    <h3 slot="title" class="font-medium">Shopping</h3>
+                    <p slot="description" class="text-sm">Boutique shops and malls within a short drive</p>
+                  </Feature>
                 </div>
                 <div class="flex items-start gap-3">
-                  <span>🌲</span>
-                  <div>
-                    <h3 class="font-medium">Parks & Recreation</h3>
-                    <p class="text-sm">Hiking trails and nature preserves nearby</p>
-                  </div>
+                  <Feature>
+                    <span slot="label">🌲</span>
+                    <h3 slot="title" class="font-medium">Parks & Recreation</h3>
+                    <p slot="description" class="text-sm">Hiking trails and nature preserves nearby</p>
+                  </Feature>
                 </div>
               </div>
             </div>

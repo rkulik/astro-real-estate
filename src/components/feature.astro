@@ -1,0 +1,14 @@
+---
+const { title, description } = Astro.slots;
+const hasTitleAndDescription = !!title && !!description;
+---
+
+<div class:list={['flex gap-3', { 'item-start': hasTitleAndDescription }, { 'items-center': !hasTitleAndDescription }]}>
+  <div>
+    <slot name="label" />
+  </div>
+  <div>
+    <slot name="title" />
+    <slot name="description" />
+  </div>
+</div>
