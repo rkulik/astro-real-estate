@@ -1,0 +1,64 @@
+---
+import { storyblokEditable } from '@storyblok/astro';
+import { Image } from 'astro:assets';
+
+import Feature from '../components/feature.astro';
+import type { NeighborhoodStoryblok } from '../types/component-types-sb';
+
+interface Props {
+  blok: NeighborhoodStoryblok;
+}
+
+const { blok } = Astro.props;
+const images = blok.images.map((image) => {
+  return {
+    src: image.filename ? `${image.filename}/m/400x0` : '',
+    alt: image.alt,
+  };
+});
+---
+
+<section {...storyblokEditable(blok)}>
+  <h2 class="mb-6 text-2xl font-bold">{blok.title}</h2>
+  <div class="grid grid-cols-1 gap-8 xl:grid-cols-2">
+    <div>
+      <p class="mb-6">{blok.description}</p>
+      <div class="space-y-4">
+        {
+          blok.features.map((feature) => {
+            return (
+              <div class="flex items-start gap-3">
+                <Feature>
+                  <span slot="label">{feature.label}</span>
+                  <h3 slot="title" class="font-medium">
+                    {feature.title}
+                  </h3>
+                  <p slot="description" class="text-sm">
+                    {feature.description}
+                  </p>
+                </Feature>
+              </div>
+            );
+          })
+        }
+      </div>
+    </div>
+    <div class="grid grid-cols-2 gap-4">
+      {
+        images.map((image) => {
+          return (
+            <div class="overflow-hidden rounded-lg">
+              <Image
+                src={image.src}
+                alt={image.alt}
+                inferSize
+                loading="lazy"
+                class="h-full w-full object-cover transition-transform hover:scale-105"
+              />
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>

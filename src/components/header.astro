@@ -1,0 +1,28 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  headline: string;
+  subheadline: string;
+  image: { src: string; alt: string | null };
+}
+
+const { headline, subheadline, image } = Astro.props;
+---
+
+<header class="relative h-[70vh] max-h-[900px] w-full">
+  <div class="absolute inset-0">
+    <Image
+      src={image.src}
+      alt={image.alt}
+      inferSize
+      loading="eager"
+      class="absolute inset-0 z-0 h-full w-full object-cover"
+    />
+    <div class="absolute inset-0 bg-black/40"></div>
+  </div>
+  <div class="relative z-10 flex h-full flex-col items-center justify-center px-4 text-center text-white">
+    <h1 class="mb-2 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">{headline}</h1>
+    <p class="mb-8 text-xl md:text-2xl">{subheadline}</p>
+  </div>
+</header>

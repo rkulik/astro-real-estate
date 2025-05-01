@@ -1,0 +1,19 @@
+---
+import { storyblokEditable } from '@storyblok/astro';
+import { richTextResolver } from '@storyblok/richtext';
+
+import type { DescriptionStoryblok } from '../types/component-types-sb';
+
+interface Props {
+  blok: DescriptionStoryblok;
+}
+
+const { blok } = Astro.props;
+const { render } = richTextResolver();
+const html = render(blok.content as any);
+---
+
+<section {...storyblokEditable(blok)}>
+  <h2 class="mb-4 text-2xl font-bold">{blok.title}</h2>
+  <div class="space-y-4" set:html={html} />
+</section>

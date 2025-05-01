@@ -1,32 +1,15 @@
 ---
 import { Image } from 'astro:assets';
 
-const images = [
-  {
-    src: 'https://picsum.photos/400/300',
-    alt: 'Living Room',
-  },
-  {
-    src: 'https://picsum.photos/400/300',
-    alt: 'Kitchen',
-  },
-  {
-    src: 'https://picsum.photos/400/300',
-    alt: 'Master Bedroom',
-  },
-  {
-    src: 'https://picsum.photos/400/300',
-    alt: 'Pool Area',
-  },
-  {
-    src: 'https://picsum.photos/400/300',
-    alt: 'Outdoor Patio',
-  },
-  {
-    src: 'https://picsum.photos/400/300',
-    alt: 'Bathroom',
-  },
-];
+interface Props {
+  images: {
+    src: string;
+    title: string;
+    alt: string | null;
+  }[];
+}
+
+const { images } = Astro.props;
 ---
 
 <div class="mx-auto w-full">
@@ -38,12 +21,12 @@ const images = [
             <Image
               src={image.src}
               alt={image.alt}
-              width={400}
-              height={300}
+              inferSize
+              loading="lazy"
               class="h-full w-full object-cover transition-transform hover:scale-105"
             />
             <div class="absolute bottom-3 left-3 rounded-md bg-black/50 px-3 py-1 text-sm text-white backdrop-blur-sm">
-              {image.alt}
+              {image.title}
             </div>
           </div>
         );

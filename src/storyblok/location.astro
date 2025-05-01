@@ -1,0 +1,30 @@
+---
+import { storyblokEditable } from '@storyblok/astro';
+import { Image } from 'astro:assets';
+
+import Feature from '../components/feature.astro';
+import type { LocationStoryblok } from '../types/component-types-sb';
+
+interface Props {
+  blok: LocationStoryblok;
+}
+
+const { blok } = Astro.props;
+const image = {
+  src: blok.image.filename ? `${blok.image.filename}/m/768x0` : '',
+  alt: blok.image.alt,
+};
+---
+
+<section {...storyblokEditable(blok)}>
+  <h2 class="mb-6 text-2xl font-bold">{blok.title}</h2>
+  <div class="space-y-4">
+    <div class="overflow-hidden rounded-lg">
+      <Image src={image.src} alt={image.alt} inferSize loading="lazy" class="w-full object-contain" />
+    </div>
+    <Feature>
+      <span slot="label">📍</span>
+      <p slot="description">{blok.address}</p>
+    </Feature>
+  </div>
+</section>

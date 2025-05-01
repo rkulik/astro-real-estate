@@ -1,0 +1,24 @@
+---
+import { storyblokEditable } from '@storyblok/astro';
+
+import { default as GalleryComponent } from '../components/gallery.astro';
+import type { GalleryStoryblok } from '../types/component-types-sb';
+
+interface Props {
+  blok: GalleryStoryblok;
+}
+
+const { blok } = Astro.props;
+const images = blok.images.map((image) => {
+  return {
+    src: image.filename ? `${image.filename}/m/400x0` : '',
+    title: image.title ?? '',
+    alt: image.alt,
+  };
+});
+---
+
+<section {...storyblokEditable(blok)}>
+  <h2 class="mb-6 text-2xl font-bold">{blok.title}</h2>
+  <GalleryComponent images={images} />
+</section>

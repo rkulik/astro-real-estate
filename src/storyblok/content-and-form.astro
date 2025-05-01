@@ -1,0 +1,45 @@
+---
+import { storyblokEditable } from '@storyblok/astro';
+import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro';
+
+import BookingForm from '../components/booking-form.astro';
+import CardContent from '../components/card/card-content.astro';
+import Card from '../components/card/card.astro';
+import type { ContentAndFormStoryblok } from '../types/component-types-sb';
+import { getConfig } from '../utils/storyblok';
+
+interface Props {
+  blok: ContentAndFormStoryblok;
+}
+
+const { blok } = Astro.props;
+const { pricePerNight } = await getConfig();
+const banner = blok.content.find((blok) => {
+  return blok.component === 'banner';
+});
+---
+
+<div {...storyblokEditable(blok)}>
+  {banner && <StoryblokComponent blok={banner} />}
+  <div class="container mx-auto flex flex-col gap-8 px-4 py-8 lg:flex-row lg:gap-12">
+    <div class="flex flex-1 flex-col gap-12">
+      {
+        blok.content
+          .filter((blok) => {
+            return blok.component !== 'banner';
+          })
+          .map((blok) => {
+            return <StoryblokComponent blok={blok} />;
+          })
+      }
+    </div>
+    <aside class="lg:max-w-sm">
+      <Card class="sticky top-8">
+        <CardContent>
+          <h3 class="mb-4 text-xl font-semibold">Book Your Stay</h3>
+          <BookingForm pricePerNight={Number(pricePerNight.price)} />
+        </CardContent>
+      </Card>
+    </aside>
+  </div>
+</div>

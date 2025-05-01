@@ -1,0 +1,37 @@
+---
+import { storyblokEditable } from '@storyblok/astro';
+
+import Feature from '../components/feature.astro';
+import PricePerNight from '../components/price-per-night.astro';
+import type { BannerStoryblok } from '../types/component-types-sb';
+import { getConfig } from '../utils/storyblok';
+
+interface Props {
+  blok: BannerStoryblok;
+}
+
+const { blok } = Astro.props;
+const { pricePerNight } = await getConfig();
+---
+
+<section {...storyblokEditable(blok)} class="border-b py-4 shadow-sm">
+  <div class="container mx-auto flex flex-col items-end justify-between gap-4 px-4 md:flex-row md:items-center">
+    <div class="flex flex-col items-end gap-4 md:flex-row md:items-center md:gap-8">
+      {
+        blok.features.map((blok) => {
+          return (
+            <Feature>
+              <span slot="label">{blok.label}</span>
+              <p slot="title" class="font-medium">
+                {blok.title}
+              </p>
+            </Feature>
+          );
+        })
+      }
+    </div>
+    <div>
+      <PricePerNight price={Number(pricePerNight.price)} />
+    </div>
+  </div>
+</section>

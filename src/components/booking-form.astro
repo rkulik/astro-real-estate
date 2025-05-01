@@ -5,12 +5,18 @@ import LabeledInput from './form/labeled-input.astro';
 import LabeledSelect from './form/labeled-select.astro';
 import LabeledTextarea from './form/labeled-textarea.astro';
 import PricePerNight from './price-per-night.astro';
+
+interface Props {
+  pricePerNight: number;
+}
+
+const { pricePerNight } = Astro.props;
 ---
 
 <form class="space-y-6" id="booking-form" action="" method="post">
   <div class="rounded-lg bg-blue-50 p-4">
     <div class="text-center">
-      <PricePerNight price={75} />
+      <PricePerNight price={pricePerNight} />
     </div>
   </div>
   <div class="space-y-4">

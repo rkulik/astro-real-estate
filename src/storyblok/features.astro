@@ -1,0 +1,39 @@
+---
+import { storyblokEditable } from '@storyblok/astro';
+
+import CardContent from '../components/card/card-content.astro';
+import Card from '../components/card/card.astro';
+import Feature from '../components/feature.astro';
+import type { FeaturesStoryblok } from '../types/component-types-sb';
+
+interface Props {
+  blok: FeaturesStoryblok;
+}
+
+const { blok } = Astro.props;
+---
+
+<section {...storyblokEditable(blok)}>
+  <h2 class="mb-6 text-2xl font-bold">{blok.title}</h2>
+  <div class="grid grid-cols-1 gap-6 xl:grid-cols-2">
+    {
+      blok.features.map((blok) => {
+        return (
+          <Card>
+            <CardContent class="flex items-start gap-4 p-6">
+              <Feature>
+                <span slot="label" class="text-xl">
+                  {blok.label}
+                </span>
+                <h3 slot="title" class="mb-2 text-lg font-semibold">
+                  {blok.title}
+                </h3>
+                <p slot="description">{blok.description}</p>
+              </Feature>
+            </CardContent>
+          </Card>
+        );
+      })
+    }
+  </div>
+</section>

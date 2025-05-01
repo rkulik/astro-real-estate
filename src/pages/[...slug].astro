@@ -1,0 +1,33 @@
+---
+import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro';
+
+import Footer from '../components/footer.astro';
+import Header from '../components/header.astro';
+import BaseLayout from '../layouts/base-layout.astro';
+import { getConfig, getLinks, getStory } from '../utils/storyblok';
+
+export const getStaticPaths = getLinks;
+
+const { slug } = Astro.params;
+const story = await getStory(slug);
+
+const { header, footer } = await getConfig();
+const image = {
+  src: header.image.filename ? `${header.image.filename}/m/0x900` : '',
+  alt: header.image.alt,
+};
+---
+
+<BaseLayout>
+  <Header headline={header.headline} subheadline={header.subheadline} image={image} />
+  <StoryblokComponent blok={story.content} />
+  <Footer
+    copyright={footer.copyright}
+    links={footer.links.map((linkStoryblok) => {
+      return {
+        label: linkStoryblok.link.story.name,
+        href: linkStoryblok.link.url,
+      };
+    })}
+  />
+</BaseLayout>
